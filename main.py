@@ -69,7 +69,7 @@ class ConectorIQOptionNuvem:
 # -------------------------------------------------------------------------
 print("🔄 Inicializando motor gráfico inteligente na nuvem...")
 
-# 🚨 ADICIONE SEUS DADOS AQUI:
+# 🚨 ADICIONE SEUS DADOS REAIS AQUI:
 EMAIL = "chovolate61@gmail.com"
 SENHA = "@Binho1010"
 
@@ -120,7 +120,8 @@ while True:
         rsi_atual = calcular_rsi_interno(ATIVO)
         print(f"📊 Analisando Gráfico... RSI Real: {rsi_atual:.2f} | Payout: 85%")
 
-        if rsi_atual >= 51:
+        # 🚨 MUDANÇA OPERACIONAL: GATILHOS FORÇADOS PARA ENTRADA IMEDIATA
+        if rsi_atual >= 10:
             print("🚨 Alvo de VENDA (Put) atingido pelo RSI!")
             status, id_ordem = API.buy_digital_spot(ATIVO, valor_atual_entrada, "put", TIMEFRAME)
             if status:
@@ -140,7 +141,7 @@ while True:
                         valor_atual_entrada = VALOR_ENTRADA_BASE
                         martingale_atual = 0
 
-        elif rsi_atual <= 49:
+        elif rsi_atual <= 90:
             print("🚨 Alvo de COMPRA (Call) atingido pelo RSI!")
             status, id_ordem = API.buy_digital_spot(ATIVO, valor_atual_entrada, "call", TIMEFRAME)
             if status:
